@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import Box from '@mui/material/Box';
 import './App.css';
+import Header from './components/Header';
+import Router from './routers';
+import Container from '@mui/material/Container';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+
+      <Box sx={{backgroundImage: 'url(images/background.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', height: '800px'}}>
+        <Container>
+          <Router />
+        </Container>
+      </Box>
+    </>
+  )
 }
 
 export default App;
