@@ -8,7 +8,7 @@ const HomePage = () => {
         <>
             <Box sx={{p: 5}}>
                 <Slider />
-                <Box mt={6} display={'flex'} gap={3}>
+                <Box mt={6} display={'flex'} gap={3} flexDirection={{lg: 'row', xs: 'column'}} alignItems={{md: 'flex-start', xs: 'center'}}>
                     <Buttons />
                     <Announcement />
                 </Box>

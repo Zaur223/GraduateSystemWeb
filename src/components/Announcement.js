@@ -5,10 +5,12 @@ const Announcement = () => {
     return (
         <Box sx={{
             width: '100%',
-            minHeight: '276px',
+            maxHeight: { xs: '326px', md: '336px' },
             borderRadius: '5px',
+            overflowY: 'auto',
             background: 'rgba(255, 255, 255, 0.90)',
-            boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)'
+            boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',
+            marginTop: { xs: '20px', lg: '0' },
         }}>
             <Box component="span" sx={{
                 display: 'block',

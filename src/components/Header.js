@@ -12,7 +12,14 @@ const Header = () => {
             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
                 <MenuIcon sx={{fontSize: 40}} />
             </IconButton>
-            <img src='/logo.svg' alt='logo' />
+            <Box
+                component="img"
+                src="/logo.svg"
+                alt="logo"
+                sx={{
+                    display: { xs: 'none', sm: 'block' },
+                }}
+            />
             <Box>
                 <Button>
                     <Typography sx={{mr: 2, color: '#000000'}}>ad soyad</Typography>

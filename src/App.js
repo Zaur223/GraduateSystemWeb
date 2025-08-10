@@ -10,7 +10,7 @@ function App() {
     <>
       <Header />
 
-      <Box sx={{backgroundImage: 'url(images/background.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', height: '800px'}}>
+      <Box sx={{backgroundImage: 'url(images/background.jpg)', backgroundPosition: 'center', backgroundSize: 'cover', height: {xs: '900px', md: '800px'}}}>
         <Container>
           <Router />
         </Container>

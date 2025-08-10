@@ -22,6 +22,7 @@ const Slider = () => {
   return (
     <Box
       sx={{
+        display: { xs: "none", sm: "block" },
         width: "100%",
         maxWidth: "1240",
         aspectRatio: "1240 / 413",
