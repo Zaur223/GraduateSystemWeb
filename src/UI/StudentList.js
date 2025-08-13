@@ -6,6 +6,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const StudentList = () => {
     return (
@@ -47,7 +48,7 @@ const StudentList = () => {
                     >
                         <Typography variant='span'>Öğrenci NO: 214210029</Typography>
                         <Typography variant='span'>Email: zaur.hacizalov96@gmail.com</Typography>
-                    <   Typography variant='span'>Telefon: +90 543 258 20 55</Typography>
+                        <Typography variant='span'>Telefon: +90 543 258 20 55</Typography>
                         <Typography variant='span'>Çalıştığı Yer: ------</Typography>
                     </Box>
                     <Box sx={{
@@ -57,7 +58,7 @@ const StudentList = () => {
                         gap: '8px'
                     }}>
                         <Button variant="contained" sx={{backgroundColor: '#69A2E3'}}>Mesaj Yaz</Button>
-                        <Button variant="contained" sx={{backgroundColor: '#69A2E3'}}>Profili</Button>
+                        <Link to={'/profile'} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Button variant="contained" sx={{backgroundColor: '#69A2E3', width: '110px'}}>Profili</Button></Link>
                     </Box>
                 </Box>
             </AccordionDetails>
