@@ -57,7 +57,7 @@ const StudentList = () => {
                         justifyContent: 'center',
                         gap: '8px'
                     }}>
-                        <Button variant="contained" sx={{backgroundColor: '#69A2E3'}}>Mesaj Yaz</Button>
+                        <Link to={'/message'} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Button variant="contained" sx={{backgroundColor: '#69A2E3'}}>Mesaj Yaz</Button></Link>
                         <Link to={'/profile'} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><Button variant="contained" sx={{backgroundColor: '#69A2E3', width: '110px'}}>Profili</Button></Link>
                     </Box>
                 </Box>

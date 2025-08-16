@@ -14,7 +14,7 @@ const Header = () => {
             </IconButton>
             <Box
                 component="img"
-                src="/logo.svg"
+                src="/logo.png"
                 alt="logo"
                 sx={{
                     display: { xs: 'none', sm: 'block' },

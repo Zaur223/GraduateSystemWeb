@@ -14,7 +14,7 @@ const AnnounceList = () => {
                     style={{
                         marginBottom: '10px',
                         listStyleType: 'none',
-                        padding: '0 20px 0 0',
+                        padding: '0 20px 0 20px',
                         position: 'relative',
                         display: 'flex',
                         alignItems: 'flex-start'

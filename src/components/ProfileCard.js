@@ -2,6 +2,7 @@ import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
+import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
 
@@ -55,12 +56,15 @@ const ProfileCard = () => {
                         borderRadius: '5px',
                     }} />
                 </Box>
-                <Button variant="contained" sx={{
+                
+                <Link to={'/message'} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                    <Button variant="contained" sx={{
                         backgroundColor: '#69A2E3',
                         color: '#fff',
                         height: '40px',
                         mr: '24px'
-                }}>Mesaj Yaz</Button>
+                    }}>Mesaj Yaz</Button>
+                </Link>
             </Box>
         </Box>
     )
