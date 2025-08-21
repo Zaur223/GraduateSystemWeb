@@ -11,6 +11,7 @@ const Announcement = () => {
             background: 'rgba(255, 255, 255, 0.90)',
             boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',
             marginTop: { xs: '20px', lg: '0' },
+            pb: '10px'
         }}>
             <Box component="span" sx={{
                 display: 'block',

@@ -11,7 +11,7 @@ const ProfileCard = () => {
     return (
         <Box sx={{
             position: 'relative',
-            width: '472px',
+            width: '554px',
             height: '194px',
             background: 'rgba(255, 255, 255, 0.73)',
             boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',
@@ -19,8 +19,8 @@ const ProfileCard = () => {
             pt: '18px',
         }}>
             <Box sx={{position: 'absolute', top: 0}}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="472" height="89" viewBox="0 0 533 100" fill="none">
-                    <path d="M0 5C0 2.23858 2.23858 0 5 0H528C530.761 0 533 2.23858 533 5V100L471.392 61.0711C456.845 51.879 439.99 47 422.782 47H0V5Z" fill="#628EFF"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="554" height="100" viewBox="0 0 554 100" fill="none">
+                    <path d="M0 5C0 2.23858 2.23858 0 5 0H549C551.761 0 554 2.23858 554 5V100L488.601 60.2416C474.354 51.5806 458.001 47 441.329 47H0V5Z" fill="#628EFF"/>
                 </svg>
             </Box>
             <IconButton sx={{position: 'absolute', zIndex: '10', top: '10px', right: '10px'}}>

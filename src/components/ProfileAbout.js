@@ -5,7 +5,7 @@ const ProfileAbout = () => {
         <Box sx={{
             display: 'flex',
             flexDirection: 'column',
-            maxWidth: '937px',
+            width: '100%',
             height: '195px',
             background: 'rgba(255, 255, 255, 0.73)',
             boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',

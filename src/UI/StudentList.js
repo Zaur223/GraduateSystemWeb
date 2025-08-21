@@ -22,9 +22,9 @@ const StudentList = () => {
                     width: '100%',
                 }}>
                     <Avatar sx={{width: '30px', height: '30px'}} />
-                    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', mx: '25px'}}>
+                    <Box sx={{display: 'flex', alignItems: 'center', gap: '75px', width: '100%', mx: '25px'}}>
                         <Typography variant='span' sx={{marginLeft: '10px', fontSize: '14px', minWidth: '60px'}}>Zaur Hajizalov</Typography>
-                        <Typography variant='span' sx={{fontSize: '14px', minWidth: '100px'}}>Bilgisayar Mühendiliği</Typography>
+                        <Typography variant='span' sx={{fontSize: '14px',maxWidth: '100px'}}>Bilgisayar Mühendiliği</Typography>
                         <Typography variant='span' sx={{fontSize: '14px', minWidth: '60px'}}>2.79</Typography>
                         <Typography variant='span' sx={{fontSize: '14px', minWidth: '60px'}}>Mezun</Typography>
                         <Typography variant='span' sx={{fontSize: '14px', minWidth: '60px'}}>15.06.2026</Typography>
