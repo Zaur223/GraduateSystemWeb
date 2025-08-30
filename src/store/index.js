@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import toggleMenuSlice from "./toggleMenu-slice";
 
 const store = configureStore({
-    reducers: {
+    reducer: {
         menu: toggleMenuSlice.reducer,
     }
 })

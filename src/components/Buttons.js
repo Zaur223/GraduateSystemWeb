@@ -8,7 +8,9 @@ const Buttons = () => {
             <Link to={'/graduate'} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <HomeButton text={'Mezun Öğrenciler'} icon={'images/graduate.svg'} />
             </Link>
-            <HomeButton text={'Mezuniyet İstatistiği'} icon={'images/statistic.svg'} />
+            <Link to={'/statistic'} style={{textDecoration: 'none'}} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                <HomeButton text={'Mezuniyet İstatistiği'} icon={'images/statistic.svg'} />
+            </Link>
             <HomeButton text={'İş Arayanlar'} icon={'images/work.svg'} />
         </Box>
     )

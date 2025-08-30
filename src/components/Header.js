@@ -4,12 +4,17 @@ import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import { useDrawerMenu } from '../modules/Drawer_module';
+
 
 
 const Header = () => {
+
+    const { toggleMenuHandler } = useDrawerMenu();
+
     return (
         <Box height={70} py={1} px={5} display={'flex'} alignItems={'center'} bgcolor={'#DBDFEA'} justifyContent={'space-between'}>
-            <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+            <IconButton onClick={toggleMenuHandler} edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
                 <MenuIcon sx={{fontSize: 40}} />
             </IconButton>
             <Box
