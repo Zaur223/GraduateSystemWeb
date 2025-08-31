@@ -6,7 +6,7 @@ const StatisticCounter = (props) => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            width: '100%',
+            width: '365px',
             height: '48px',
             background: '#ffffff',
             px: '20px',
