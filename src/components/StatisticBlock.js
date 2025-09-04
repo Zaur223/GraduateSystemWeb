@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import StatisticButton from "../UI/StatisticButton";
 import StatisticGeneral from "./StatisticGeneral";
 import { useState } from "react";
+import StatisticFaculty from "./StatisticFaculty";
 
 const StatisticBlock = () => {
     const [active, setActive] = useState("Genel");
@@ -12,7 +13,7 @@ const StatisticBlock = () => {
             minHeight: '506px',
             background: 'rgba(244, 244, 244, 0.73)',
             borderRadius: '5px',
-            mt: '42px',
+            mt: '22px',
             pb: '30px',
             boxShadow: "0 6px 4px 0 rgba(0, 0, 0, 0.25)",
         }}>
@@ -29,6 +30,7 @@ const StatisticBlock = () => {
                     <StatisticButton text={'Öğrenci'} isActive={active === 'Öğrenci'} onClick={() => setActive('Öğrenci')} />
                 </Box>
                 {active === 'Genel' && <StatisticGeneral />}
+                {active === 'Fakülte' && <StatisticFaculty />}
             </Box>
         </Box>
     )

@@ -18,7 +18,7 @@ const StatisticDoughnut = () => {
   };
 
   return (
-    <Box sx={{width: '400px', mr: '170px'}}>
+    <Box sx={{width: '400px'}}>
         <Doughnut data={data} />
     </Box>
   );
