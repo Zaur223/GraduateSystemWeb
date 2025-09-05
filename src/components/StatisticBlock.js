@@ -3,6 +3,7 @@ import StatisticButton from "../UI/StatisticButton";
 import StatisticGeneral from "./StatisticGeneral";
 import { useState } from "react";
 import StatisticFaculty from "./StatisticFaculty";
+import StatisticStudent from "./StatisticStudent";
 
 const StatisticBlock = () => {
     const [active, setActive] = useState("Genel");
@@ -31,6 +32,7 @@ const StatisticBlock = () => {
                 </Box>
                 {active === 'Genel' && <StatisticGeneral />}
                 {active === 'Fakülte' && <StatisticFaculty />}
+                {active === 'Öğrenci' && <StatisticStudent />}
             </Box>
         </Box>
     )
