@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import CertificateIcon from "../assets/icons/CertificateIcon";
-import SquareIcon from "../assets/icons/squareIcon";
-import ProfileSertificate from "../UI/ProfileSertificate";
+import CertificateIcon from "../assets/icons/CertificateIcon.js";
+import SquareIcon from "../assets/icons/squareIcon.js";
+import ProfileSertificate from "../UI/ProfileSertificate.js";
 
 const ProfileSertificates = () => {
     return (

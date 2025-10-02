@@ -1,8 +1,8 @@
-import GraduatePage from "../pages/GraduatePage";
-import HomePage from "../pages/HomePage";
-import MessagePage from "../pages/MessagePage";
-import ProfilePage from "../pages/ProfilePage";
-import StatisticPage from "../pages/StatisticPage";
+import GraduatePage from "../pages/GraduatePage.js";
+import HomePage from "../pages/HomePage.js";
+import MessagePage from "../pages/MessagePage.js";
+import ProfilePage from "../pages/ProfilePage.js";
+import StatisticPage from "../pages/StatisticPage.js";
 
 const publicRoutes = [
   { path: "/", element: <HomePage /> },

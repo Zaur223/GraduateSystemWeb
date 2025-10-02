@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import ComboBox from "../UI/ComboBox";
-import DummyStudent from "../data/DummyStudent";
-import DummyFaculty from "../data/DummyFaculty";
-import DummySection from "../data/DummySection";
-import DatePickerViews from "../UI/DatePickerViews";
-import DummyGANO from "../data/DummyGANO";
+import ComboBox from "../UI/ComboBox.js";
+import DummyStudent from "../data/DummyStudent.js";
+import DummyFaculty from "../data/DummyFaculty.js";
+import DummySection from "../data/DummySection.js";
+import DatePickerViews from "../UI/DatePickerViews.js";
+import DummyGANO from "../data/DummyGANO.js";
 
 const Filter = () => {
     return (

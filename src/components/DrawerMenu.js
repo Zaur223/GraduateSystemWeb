@@ -1,7 +1,7 @@
 import { Drawer, Box } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useDrawerMenu } from '../modules/Drawer_module';
-import HomeButton from "../UI/HomeButton";
+import { useDrawerMenu } from '../modules/Drawer_module.js';
+import HomeButton from "../UI/HomeButton.js";
 
 
 const DrawerMenu = () => {

@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import MessageUser from "../UI/MessageUser";
+import MessageUser from "../UI/MessageUser.js";
 
 const MessageUsers = () => {
     return (

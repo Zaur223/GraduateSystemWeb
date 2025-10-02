@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import AnnounceLists from "./AnnounceLists";
+import AnnounceLists from "./AnnounceLists.js";
 
 const Announcement = () => {
     return (

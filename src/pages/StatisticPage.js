@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
-import BackButton from "../UI/BackButton";
-import StatisticBlock from "../components/StatisticBlock";
+import BackButton from "../UI/BackButton.js";
+import StatisticBlock from "../components/StatisticBlock.js";
 import { Link } from "react-router-dom";
 
 const StatisticPage = () => {

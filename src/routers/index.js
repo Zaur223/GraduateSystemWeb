@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import publicRoutes from "./publicRoutes";
+import publicRoutes from "./publicRoutes.js";
 
 export default function Router() {
     return (

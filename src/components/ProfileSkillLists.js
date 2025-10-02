@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import ProfileSkill from "../UI/ProfileSkill";
+import ProfileSkill from "../UI/ProfileSkill.js";
 
 const ProfileSkillLists = () => {
     return (

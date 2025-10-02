@@ -1,6 +1,6 @@
 import { Avatar, Box, Typography } from "@mui/material";
-import ComboBox from "../UI/ComboBox";
-import DummyStudent from "../data/DummyStudent";
+import ComboBox from "../UI/ComboBox.js";
+import DummyStudent from "../data/DummyStudent.js";
 
 const StatisticStudent = () => {
     return (

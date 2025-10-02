@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
-import DatePickerViews from "../UI/DatePickerViews";
-import StatisticCounter from "../UI/StatisticCounter";
-import StatisticDoughnut from "../modules/StatisticDoughnut";
+import DatePickerViews from "../UI/DatePickerViews.js";
+import StatisticCounter from "../UI/StatisticCounter.js";
+import StatisticDoughnut from "../modules/StatisticDoughnut.js";
 
 const StatisticGeneral = () => {
     return (

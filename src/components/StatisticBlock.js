@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import StatisticButton from "../UI/StatisticButton";
-import StatisticGeneral from "./StatisticGeneral";
+import StatisticButton from "../UI/StatisticButton.js";
+import StatisticGeneral from "./StatisticGeneral.js";
 import { useState } from "react";
-import StatisticFaculty from "./StatisticFaculty";
-import StatisticStudent from "./StatisticStudent";
+import StatisticFaculty from "./StatisticFaculty.js";
+import StatisticStudent from "./StatisticStudent.js";
 
 const StatisticBlock = () => {
     const [active, setActive] = useState("Genel");

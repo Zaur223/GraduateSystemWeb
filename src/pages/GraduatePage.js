@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
-import Filter from "../components/Filter";
-import StudentLists from "../components/StudentLists";
-import BackButton from "../UI/BackButton";
+import Filter from "../components/Filter.js";
+import StudentLists from "../components/StudentLists.js";
+import BackButton from "../UI/BackButton.js";
 import { Link } from "react-router-dom";
 
 const GraduatePage = () => {

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import HomeButton from "../UI/HomeButton";
+import HomeButton from "../UI/HomeButton.js";
 import { Link } from "react-router-dom";
 
 const Buttons = () => {

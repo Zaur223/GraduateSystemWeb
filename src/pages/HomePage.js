@@ -1,7 +1,7 @@
-import Slider from '../modules/Slider'
+import Slider from '../modules/Slider.js'
 import Box from "@mui/material/Box"
-import Buttons from '../components/Buttons'
-import Announcement from '../components/Announcement'
+import Buttons from '../components/Buttons.js'
+import Announcement from '../components/Announcement.js'
 
 const HomePage = () => {
     return (

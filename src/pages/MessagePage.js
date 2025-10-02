@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
-import Message from '../components/Message';
-import BackButton from '../UI/BackButton';
 import { Link } from 'react-router-dom';
-import MessageUsers from '../components/MessageUsers';
+import Message from '../components/Message.js';
+import BackButton from '../UI/BackButton.js';
+import MessageUsers from '../components/MessageUsers.js';
 
 const MessagePage = () => {
     return (

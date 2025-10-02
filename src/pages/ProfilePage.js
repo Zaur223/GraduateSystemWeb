@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import BackButton from "../UI/BackButton";
-import ProfileCard from "../components/ProfileCard";
-import ProfileInfo from "../components/ProfileInfo";
-import ProfileAbout from "../components/ProfileAbout";
+import BackButton from "../UI/BackButton.js";
+import ProfileCard from "../components/ProfileCard.js";
+import ProfileInfo from "../components/ProfileInfo.js";
+import ProfileAbout from "../components/ProfileAbout.js";
 import Box from "@mui/material/Box";
-import ProfileSertificates from "../components/ProfileSertificates";
-import ProfileSkillLists from "../components/ProfileSkillLists";
+import ProfileSertificates from "../components/ProfileSertificates.js";
+import ProfileSkillLists from "../components/ProfileSkillLists.js";
 
 const ProfilePage = () => {
     return (

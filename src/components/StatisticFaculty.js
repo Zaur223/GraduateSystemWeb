@@ -1,8 +1,8 @@
-import ComboBox from "../UI/ComboBox";
+import ComboBox from "../UI/ComboBox.js";
 import { Box } from "@mui/material";
-import DummyFaculty from "../data/DummyFaculty";
-import StatisticCounter from "../UI/StatisticCounter";
-import LineChart from "../modules/LineChart";
+import DummyFaculty from "../data/DummyFaculty.js";
+import StatisticCounter from "../UI/StatisticCounter.js";
+import LineChart from "../modules/LineChart.js";
 
 const StatisticFaculty = () => {
     return (

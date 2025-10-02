@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import './App.css';
-import Header from './components/Header';
-import Router from './routers';
+import Header from './components/Header.js';
+import Router from './routers/index.js';
 import Container from '@mui/material/Container';
-import DrawerMenu from './components/DrawerMenu';
+import DrawerMenu from './components/DrawerMenu.js';
 
 
 function App() {

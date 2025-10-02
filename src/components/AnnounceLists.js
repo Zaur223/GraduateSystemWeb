@@ -1,4 +1,4 @@
-import AnnounceList from "../UI/AnnounceList";
+import AnnounceList from "../UI/AnnounceList.js";
 import { Box } from "@mui/material";
 
 const AnnounceLists = () => {
