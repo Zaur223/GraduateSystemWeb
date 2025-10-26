@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 import { Link } from "react-router-dom";
 
-const ProfileCard = () => {
+const ProfileCard = (props) => {
 
     const icons = [<InstagramIcon />, <LinkedInIcon />, <XIcon />];
 
@@ -35,9 +35,9 @@ const ProfileCard = () => {
                     ml: '24px'
                 }} />
                 <Box sx={{mt: '30px', ml: '22px'}}>
-                    <Typography variant="h6" sx={{fontWeight: '700'}}>Zaur Hajizalov</Typography>
-                    <Typography variant="span" sx={{display: 'block', fontFamily: 'Roboto', fontSize: '14px', color: '#5F5F5F', mt: '5px'}}>Hitit Üniversite öğrencisi</Typography>
-                    <Typography variant="span" sx={{display: 'block', fontFamily: 'Roboto', fontSize: '14px', color: '#5F5F5F'}}>Azerbaycan, Bakü</Typography>
+                    <Typography variant="h6" sx={{fontWeight: '700'}}>{props.student?.label || 'Zaur Hajizalov'}</Typography>
+                    <Typography variant="span" sx={{display: 'block', fontFamily: 'Roboto', fontSize: '14px', color: '#5F5F5F', mt: '5px'}}>{props.student?.school || 'Hitit Üniversite öğrencisi'}</Typography>
+                    <Typography variant="span" sx={{display: 'block', fontFamily: 'Roboto', fontSize: '14px', color: '#5F5F5F'}}>{props.student?.location || 'Azerbaycan, Bakü'}</Typography>
                 </Box>
             </Box>
             <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>

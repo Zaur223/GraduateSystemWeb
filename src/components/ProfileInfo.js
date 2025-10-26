@@ -1,6 +1,6 @@
 import { Typography, Box } from "@mui/material";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
     return (
         <Box sx={{
             display: 'flex',
@@ -16,19 +16,19 @@ const ProfileInfo = () => {
             pt: '18px'
         }}>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Email:</Box> zaur.hacizalov96@gmail.com
+                <Box component="span" sx={{ fontWeight: 700 }}>Email:</Box> {props.student?.email || 'zaur.hacizalov96@gmail.com'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Okuduğu Bölüm:</Box> Bilgisayar mühendisliği
+                <Box component="span" sx={{ fontWeight: 700 }}>Okuduğu Bölüm:</Box> {props.student?.department || 'Bilgisayar mühendisliği'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Çalıştığı Yer:</Box> ------
+                <Box component="span" sx={{ fontWeight: 700 }}>Çalıştığı Yer:</Box> {props.student?.work || '------'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Çalıştığı Alan:</Box> Frontend
+                <Box component="span" sx={{ fontWeight: 700 }}>Çalıştığı Alan:</Box> {props.student?.field || 'Frontend'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Mezun Tarihi:</Box> 15.06.2026
+                <Box component="span" sx={{ fontWeight: 700 }}>Mezun Tarihi:</Box> {props.student?.graduation || '15.06.2026'}
             </Typography>
         </Box>
     )

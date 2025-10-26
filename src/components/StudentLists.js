@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import StudentList from "../UI/StudentList.js";
+import DummyStudent from "../data/DummyStudent.js";
 
 const StudentLists = () => {
     return (
@@ -20,28 +21,16 @@ const StudentLists = () => {
                 marginTop: '24px',
                 marginBottom: '14px',
             }}>
-                <Typography variant="span">Ad Soyad</Typography>
-                <Typography variant="span">Bölüm</Typography>
-                <Typography variant="span">GANO</Typography>
-                <Typography variant="span">Durum</Typography>
-                <Typography variant="span">Mezun Tarihi</Typography>
+                <Box component="span">Ad Soyad</Box>
+                <Box component="span">Bölüm</Box>
+                <Box component="span">GANO</Box>
+                <Box component="span">Durum</Box>
+                <Box component="span">Mezun Tarihi</Box>
             </Box>
-            <Box sx={{
-                mx: '35px',
-            }}>
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
-                <StudentList />
+            <Box sx={{mx: '35px'}}>
+                {DummyStudent.map((student, idx) => (
+                    <StudentList key={idx} student={student} id={idx} />
+                ))}
             </Box>
         </Box>
     )
