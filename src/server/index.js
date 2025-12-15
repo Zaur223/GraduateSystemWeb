@@ -1,30 +1,46 @@
+import express from "express";
+import mongoose from "mongoose";
+import { login, register } from "./controllers/UserController.js";
 import { registerValidation } from '../validations/auth.js';
-import express from 'express';
-import mongoose from 'mongoose';
-
-import * as UserController from './controllers/UserController.js'
-import CheckAuth from '../utils/CheckAuth.js';
-
-
-mongoose.connect('mongodb+srv://admin:zaur123@cluster0.kuh6z8i.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
-.then(() => {
-    console.log('DB ok')
-}).catch(() => console.log('DB error', err))
 
 const app = express();
-
 app.use(express.json());
 
-app.post('/auth/login', UserController.login)
+// CORS middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
-app.post('/auth/register', registerValidation, UserController.register)
+mongoose
+  .connect("mongodb://localhost:27017/project")
+  .then(() => console.log("DB ok"))
+  .catch((err) => console.log("DB error", err));
 
-app.get('/auth/me', CheckAuth, UserController.getMe)
+app.get("/test", (req, res) => {
+  res.json({ message: "API çalışıyor" });
+});
 
-app.listen(4444, (err) => {
-    if (err) {
-        return console.log(err)
-    }
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find().select("-password");
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Hata oluştu" });
+  }
+});
 
-    console.log('server ok')
-})
+app.post('/auth/login', login)
+
+app.post('/auth/register', registerValidation, register)
+
+
+app.listen(5000, () => {
+  console.log("server ok");
+});

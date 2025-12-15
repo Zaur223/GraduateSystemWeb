@@ -1,6 +1,13 @@
-import { Box, Link} from "@mui/material";
+import { Box, Link } from "@mui/material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
     const inputStyle = {
         width: '300px',
         height: '40px',
@@ -10,7 +17,33 @@ const AuthPage = () => {
         border: 'none'
     }
 
-    return  (
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        try {
+            const response = await fetch('http://localhost:5000/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('token', data.token);
+                navigate('/'); // Başarılı giriş sonrası ana sayfaya yönlendirme
+            } else {
+                setError(data.message || 'Giriş başarısız');
+            }
+        } catch (err) {
+            setError('Sunucuya bağlanılamadı');
+        }
+    };
+
+    return (
         <>
             <Box sx={{
                 display: 'flex',
@@ -26,21 +59,40 @@ const AuthPage = () => {
                     padding: '45px 88px 57px 88px',
 
                 }}>
-                    <img style={{display: "block", margin: '0 auto'}} src="./main_logo.svg" alt="/" />
+                    <img style={{ display: "block", margin: '0 auto' }} src="./main_logo.svg" alt="/" />
                     <Box sx={{
                         display: 'flex',
                         justifyContent: 'center',
                         marginTop: '60px'
                     }}>
-                        <Box component="form" sx={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
+                        <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            {error && (
+                                <Box sx={{ color: 'red', textAlign: 'center', mb: 2 }}>
+                                    {error}
+                                </Box>
+                            )}
                             <Box>
-                                <Box component="label" sx={{display: 'block', mb: 0.5, fontFamily: 'Roboto'}}>Email</Box>
-                                <input style={inputStyle} type='text' name='No' required />
+                                <Box component="label" sx={{ display: 'block', mb: 0.5, fontFamily: 'Roboto' }}>Email</Box>
+                                <input
+                                    style={inputStyle}
+                                    type='email'
+                                    name='email'
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
                             </Box>
 
                             <Box>
-                                <Box component="label" sx={{display: 'block', mb: 0.5, fontFamily: 'Roboto'}}>Şifre</Box>
-                                <input style={inputStyle} type='password' name='password' required />
+                                <Box component="label" sx={{ display: 'block', mb: 0.5, fontFamily: 'Roboto' }}>Şifre</Box>
+                                <input
+                                    style={inputStyle}
+                                    type='password'
+                                    name='password'
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
                             </Box>
 
                             <button style={{
