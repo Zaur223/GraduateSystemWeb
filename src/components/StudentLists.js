@@ -1,8 +1,7 @@
 import { Box } from "@mui/material";
 import StudentList from "../UI/StudentList.js";
-import DummyStudent from "../data/DummyStudent.js";
 
-const StudentLists = () => {
+const StudentLists = ({ students }) => {
     return (
         <Box sx={{
             width: '100%',
@@ -13,22 +12,25 @@ const StudentLists = () => {
         }}>
             <Box sx={{
                 display: 'flex',
-                justifyContent: 'space-between',
-                mx: '118px',
+                alignItems: 'center',
+                mx: '35px',
                 fontFamily: 'Roboto',
                 fontSize: '14px',
                 fontWeight: '600',
                 marginTop: '24px',
                 marginBottom: '14px',
             }}>
-                <Box component="span">Ad Soyad</Box>
-                <Box component="span">Bölüm</Box>
-                <Box component="span">GANO</Box>
-                <Box component="span">Durum</Box>
-                <Box component="span">Mezun Tarihi</Box>
+                <Box sx={{width: '55px'}}></Box>
+                <Box sx={{display: 'flex', alignItems: 'center', flex: 1, justifyContent: 'space-between'}}>
+                    <Box component="span" sx={{width: '120px'}}>Ad Soyad</Box>
+                    <Box component="span" sx={{width: '100px'}}>Bölüm</Box>
+                    <Box component="span" sx={{width: '60px'}}>GANO</Box>
+                    <Box component="span" sx={{width: '60px'}}>Durum</Box>
+                    <Box component="span" sx={{width: '100px'}}>Mezun Tarihi</Box>
+                </Box>
             </Box>
             <Box sx={{mx: '35px'}}>
-                {DummyStudent.map((student, idx) => (
+                {students.map((student, idx) => (
                     <StudentList key={idx} student={student} id={idx} />
                 ))}
             </Box>

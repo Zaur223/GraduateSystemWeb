@@ -5,13 +5,17 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Box } from '@mui/material';
 
-export default function DatePickerViews() {
+export default function DatePickerViews({ label, onChange }) {
   return (
     <Box marginBottom={'8px'}>
       <LocalizationProvider dateAdapter={AdapterDayjs} >
         <DemoContainer components={['DatePicker']}>
           <Box width={190}>
-            <DatePicker label="Mezun Tarihi" views={['year']} />
+            <DatePicker 
+              label={label || "Mezun Tarihi"} 
+              views={['year']} 
+              onChange={(value) => onChange && onChange(value ? value.toDate() : null)} 
+            />
           </Box>
         </DemoContainer>
       </LocalizationProvider>

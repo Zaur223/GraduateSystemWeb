@@ -4,6 +4,12 @@ import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../store/user-slice.js';
+import { useNavigate } from 'react-router-dom';
 import { useDrawerMenu } from '../modules/Drawer_module.js';
 
 
@@ -11,6 +17,26 @@ import { useDrawerMenu } from '../modules/Drawer_module.js';
 const Header = () => {
 
     const { toggleMenuHandler } = useDrawerMenu();
+    const user = useSelector(state => state.user.user);
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/auth');
+        handleClose();
+    };
 
     return (
         <Box height={70} py={1} px={5} display={'flex'} alignItems={'center'} bgcolor={'#DBDFEA'} justifyContent={'space-between'}>
@@ -26,10 +52,20 @@ const Header = () => {
                 }}
             />
             <Box>
-                <Button>
-                    <Typography sx={{mr: 2, color: '#000000'}}>ad soyad</Typography>
+                <Button onClick={handleClick}>
+                    <Typography sx={{mr: 2, color: '#000000'}}>
+                        {isAuthenticated ? `${user.firstName} ${user.lastName}` : 'ad soyad'}
+                    </Typography>
                     <Avatar />
                 </Button>
+                <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <MenuItem>Kullanıcı Ayarları</MenuItem>
+                    <MenuItem onClick={handleLogout}>Çıkış Yap</MenuItem>
+                </Menu>
             </Box>
         </Box>
     )

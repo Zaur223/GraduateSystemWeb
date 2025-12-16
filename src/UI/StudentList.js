@@ -21,13 +21,15 @@ const StudentList = (props) => {
                     color: '#5F5F5F',
                     width: '100%',
                 }}>
-                    <Avatar sx={{width: '30px', height: '30px'}} />
-                    <Box sx={{display: 'flex', alignItems: 'center', gap: '75px', width: '100%', mx: '25px'}}>
-                        <Typography variant='span' sx={{marginLeft: '10px', fontSize: '14px', minWidth: '60px'}}>{props.student?.label || 'İsim'}</Typography>
-                        <Typography variant='span' sx={{fontSize: '14px',maxWidth: '100px'}}>Bilgisayar Mühendiliği</Typography>
-                        <Typography variant='span' sx={{fontSize: '14px', minWidth: '60px'}}>2.79</Typography>
-                        <Typography variant='span' sx={{fontSize: '14px', minWidth: '60px'}}>Mezun</Typography>
-                        <Typography variant='span' sx={{fontSize: '14px', minWidth: '60px'}}>15.06.2026</Typography>
+                    <Box sx={{display: 'flex', alignItems: 'center', width: '100%', mx: '25px'}}>
+                        <Avatar sx={{width: '30px', height: '30px', mr: '25px'}} />
+                        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, justifyContent: 'space-between'}}>
+                            <Typography variant='span' sx={{fontSize: '14px', width: '120px'}}>{props.student?.firstName} {props.student?.lastName}</Typography>
+                            <Typography variant='span' sx={{fontSize: '14px', width: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{props.student?.department}</Typography>
+                            <Typography variant='span' sx={{fontSize: '14px', width: '60px'}}>{props.student?.gpa}</Typography>
+                            <Typography variant='span' sx={{fontSize: '14px', width: '60px'}}>Mezun</Typography>
+                            <Typography variant='span' sx={{fontSize: '14px', width: '100px'}}>{props.student?.graduationDate ? new Date(props.student.graduationDate).toLocaleDateString('tr-TR') : 'N/A'}</Typography>
+                        </Box>
                     </Box>
                 </Box>
             </AccordionSummary>
@@ -46,10 +48,10 @@ const StudentList = (props) => {
                         fontFamily: 'Roboto',
                         }}
                     >
-                        <Typography variant='span'>Öğrenci NO: {props.student?.no || '214210029'}</Typography>
-                        <Typography variant='span'>Email: {props.student?.email || 'example@mail.com'}</Typography>
-                        <Typography variant='span'>Telefon: {props.student?.phone || '+90 000 000 00 00'}</Typography>
-                        <Typography variant='span'>Çalıştığı Yer: {props.student?.work || '------'}</Typography>
+                        <Typography variant='span'>Email: {props.student?.email}</Typography>
+                        <Typography variant='span'>Fakülte: {props.student?.faculty}</Typography>
+                        <Typography variant='span'>Bölüm: {props.student?.department}</Typography>
+                        <Typography variant='span'>GANO: {props.student?.gpa}</Typography>
                     </Box>
                     <Box sx={{
                         display: 'flex',
