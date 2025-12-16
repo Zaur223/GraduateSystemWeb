@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import DummyStudent from "../data/DummyStudent.js";
+import { useState, useEffect } from "react";
 import BackButton from "../UI/BackButton.js";
 import ProfileCard from "../components/ProfileCard.js";
 import ProfileInfo from "../components/ProfileInfo.js";
@@ -10,7 +10,22 @@ import ProfileSkillLists from "../components/ProfileSkillLists.js";
 
 const ProfilePage = () => {
     const { id } = useParams();
-    const student = id ? DummyStudent[Number(id)] : null;
+    const [student, setStudent] = useState(null);
+
+    useEffect(() => {
+        if (id) {
+            const fetchStudent = async () => {
+                try {
+                    const response = await fetch(`http://localhost:5000/users/${id}`);
+                    const data = await response.json();
+                    setStudent(data);
+                } catch (error) {
+                    console.error('Error fetching student:', error);
+                }
+            };
+            fetchStudent();
+        }
+    }, [id]);
 
     return (
         <>

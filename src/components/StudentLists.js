@@ -31,7 +31,7 @@ const StudentLists = ({ students }) => {
             </Box>
             <Box sx={{mx: '35px'}}>
                 {students.map((student, idx) => (
-                    <StudentList key={idx} student={student} id={idx} />
+                    <StudentList key={idx} student={student} id={student._id} />
                 ))}
             </Box>
         </Box>

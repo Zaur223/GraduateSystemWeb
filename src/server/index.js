@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import User from "./controllers/UserController.js";
-import { login, register } from "./controllers/UserController.js";
+import { login, register, getUser } from "./controllers/UserController.js";
 import { registerValidation } from "../validations/auth.js";
 
 const app = express();
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
   }
 });
 
-// ✅ LOCAL MongoDB (DOĞRU OLAN)
+// ✅ LOCAL MongoDB
 mongoose
   .connect("mongodb://localhost:27017/project")
   .then(() => console.log("DB ok"))
@@ -35,6 +35,7 @@ app.get("/test", (req, res) => {
   res.json({ message: "API çalışıyor" });
 });
 
+// tüm kullanıcılar
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find().select("-password");
@@ -44,6 +45,10 @@ app.get("/users", async (req, res) => {
   }
 });
 
+// 🔹 PROFIL (f8cdacc’ten gelen ÖZELLİK)
+app.get("/users/:id", getUser);
+
+// auth
 app.post("/auth/login", login);
 app.post("/auth/register", registerValidation, register);
 

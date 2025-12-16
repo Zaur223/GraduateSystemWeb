@@ -22,13 +22,13 @@ const ProfileInfo = (props) => {
                 <Box component="span" sx={{ fontWeight: 700 }}>Okuduğu Bölüm:</Box> {props.student?.department || 'Bilgisayar mühendisliği'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Çalıştığı Yer:</Box> {props.student?.work || '------'}
+                <Box component="span" sx={{ fontWeight: 700 }}>Fakülte:</Box> {props.student?.faculty || 'Mühendislik'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Çalıştığı Alan:</Box> {props.student?.field || 'Frontend'}
+                <Box component="span" sx={{ fontWeight: 700 }}>GPA:</Box> {props.student?.gpa || '3.5'}
             </Typography>
             <Typography variant="p" sx={{fontSize: '16px', fontFamily: 'Roboto'}}>
-                <Box component="span" sx={{ fontWeight: 700 }}>Mezun Tarihi:</Box> {props.student?.graduation || '15.06.2026'}
+                <Box component="span" sx={{ fontWeight: 700 }}>Mezun Tarihi:</Box> {props.student?.graduationDate ? new Date(props.student.graduationDate).toLocaleDateString('tr-TR') : '15.06.2026'}
             </Typography>
         </Box>
     )

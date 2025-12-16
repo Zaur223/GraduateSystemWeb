@@ -103,3 +103,15 @@ export const register = async (req, res) => {
     res.status(500).json({ message: 'Kayıt yapılamadı' });
   }
 };
+
+export const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: 'Kullanıcı bulunamadı' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: 'Hata oluştu' });
+  }
+};
