@@ -3,7 +3,7 @@ import CertificateIcon from "../assets/icons/CertificateIcon.js";
 import SquareIcon from "../assets/icons/squareIcon.js";
 import ProfileSertificate from "../UI/ProfileSertificate.js";
 
-const ProfileSertificates = () => {
+const ProfileSertificates = (props) => {
     return (
         <>
             <Box sx={{
@@ -25,9 +25,15 @@ const ProfileSertificates = () => {
                     </Box>
                 </Box>
                 <Box sx={{mt: '40px'}}>
-                    <ProfileSertificate />
-                    <ProfileSertificate />
-                    <ProfileSertificate />
+                    {props.student?.educations && props.student.educations.length > 0 ? (
+                        props.student.educations.map((edu, idx) => (
+                            <ProfileSertificate key={idx} edu={edu} />
+                        ))
+                    ) : (
+                        <>
+                            
+                        </>
+                    )}
                 </Box>
             </Box>
 

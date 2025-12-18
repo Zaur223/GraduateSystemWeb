@@ -2,10 +2,11 @@ import { Box } from "@mui/material";
 import Filter from "../components/Filter.js";
 import StudentLists from "../components/StudentLists.js";
 import BackButton from "../UI/BackButton.js";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const GraduatePage = () => {
+    const navigate = useNavigate();
     const [students, setStudents] = useState([]);
     const [filteredStudents, setFilteredStudents] = useState([]);
 
@@ -51,7 +52,7 @@ const GraduatePage = () => {
 
     return (
         <>
-            <Link to={'..'} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><BackButton /></Link>
+            <BackButton onClick={() => navigate(-1)} />
             <Box sx={{pt: 3, display: 'flex', gap: '12px'}}>
                 <Filter students={students} onFilter={handleFilter} />
                 <StudentLists students={filteredStudents} />

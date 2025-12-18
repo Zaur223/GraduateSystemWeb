@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 
-const BackButton = () => {
+const BackButton = ({ onClick }) => {
     return (
-        <Button variant="contained" sx={{
+        <Button onClick={onClick} variant="contained" sx={{
             marginTop: '36px',
             width: '134px', 
             height: '40px',

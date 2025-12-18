@@ -59,6 +59,25 @@ const UserSchema = new mongoose.Schema(
         return this.role === "student";
       },
     },
+    about: {
+      type: String,
+      default: ''
+    },
+    educations: {
+      type: [
+        {
+          school: String,
+          degree: String,
+          startYear: String,
+          endYear: String,
+        },
+      ],
+      default: [],
+    },
+    skills: {
+      type: [String],
+      default: [],
+    },
   },
   { timestamps: true }
 );
@@ -95,6 +114,9 @@ export const register = async (req, res) => {
       department: req.body.department,
       gpa: req.body.gpa,
       graduationDate: req.body.graduationDate,
+      educations: req.body.educations || [],
+      skills: req.body.skills || [],
+      about: req.body.about || '',
     });
     const user = await doc.save();
     const token = 'dummy-token-' + user._id;
@@ -104,13 +126,48 @@ export const register = async (req, res) => {
   }
 };
 
-export const getUser = async (req, res) => {
+export const updateUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select("-password");
+    const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: 'Kullanıcı bulunamadı' });
     }
-    res.json(user);
+
+    // Only allow updating educations, skills and about through this endpoint
+    if (req.body.educations !== undefined) user.educations = req.body.educations;
+    if (req.body.skills !== undefined) user.skills = req.body.skills;
+    if (req.body.about !== undefined) user.about = req.body.about;
+
+    // Ensure arrays exist for student role
+    if (user.role === 'student') {
+      user.educations = user.educations || [];
+      user.skills = user.skills || [];
+      user.about = user.about || '';
+    }
+
+    await user.save();
+    const safeUser = user.toObject();
+    delete safeUser.password;
+    res.json(safeUser);
+  } catch (err) {
+    res.status(500).json({ message: 'Güncelleme başarısız' });
+  }
+};
+
+export const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'Kullanıcı bulunamadı' });
+    }
+    const safeUser = user.toObject();
+    delete safeUser.password;
+    if (safeUser.role === 'student') {
+      safeUser.educations = safeUser.educations || [];
+      safeUser.skills = safeUser.skills || [];
+      safeUser.about = safeUser.about || '';
+    }
+    res.json(safeUser);
   } catch (err) {
     res.status(500).json({ message: 'Hata oluştu' });
   }

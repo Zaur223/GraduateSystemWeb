@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import ProfileSkill from "../UI/ProfileSkill.js";
 
-const ProfileSkillLists = () => {
+const ProfileSkillLists = (props) => {
     return (
         <Box sx={{ 
             width: '487px',
@@ -22,10 +22,13 @@ const ProfileSkillLists = () => {
                 <img src="images/skillsIcon.svg" alt="" />
                 <Typography variant="h2" sx={{fontSize: '20px', fontWeight: '700', color: '#345375'}}>Yetenekler</Typography>
             </Box>
-            <ProfileSkill />
-            <ProfileSkill />
-            <ProfileSkill />
-            <ProfileSkill />
+            {props.student?.skills && props.student.skills.length > 0 ? (
+                props.student.skills.map((s, idx) => <ProfileSkill key={idx} skill={s} />)
+            ) : (
+                <>
+                
+                </>
+            )}
         </Box>
     )
 }
