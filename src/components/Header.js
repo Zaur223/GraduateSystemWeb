@@ -38,6 +38,17 @@ const Header = () => {
         handleClose();
     };
 
+    const handleProfileEdit = () => {
+        handleClose();
+        if (!isAuthenticated) {
+            navigate('/auth');
+            return;
+        }
+        if (user && user._id) {
+            navigate(`/profile/${user._id}`);
+        }
+    };
+
     return (
         <Box height={70} py={1} px={5} display={'flex'} alignItems={'center'} bgcolor={'#DBDFEA'} justifyContent={'space-between'}>
             <IconButton onClick={toggleMenuHandler} edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
@@ -63,7 +74,7 @@ const Header = () => {
                     open={open}
                     onClose={handleClose}
                 >
-                    <MenuItem>Kullanıcı Ayarları</MenuItem>
+                    <MenuItem onClick={handleProfileEdit}>Kullanıcı Ayarları</MenuItem>
                     <MenuItem onClick={handleLogout}>Çıkış Yap</MenuItem>
                 </Menu>
             </Box>

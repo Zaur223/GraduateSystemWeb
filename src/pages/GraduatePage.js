@@ -4,11 +4,20 @@ import StudentLists from "../components/StudentLists.js";
 import BackButton from "../UI/BackButton.js";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+
 
 const GraduatePage = () => {
     const navigate = useNavigate();
+    const currentUser = useSelector((state) => state.user.user);
     const [students, setStudents] = useState([]);
     const [filteredStudents, setFilteredStudents] = useState([]);
+
+    useEffect(() => {
+        if (currentUser && currentUser.role === 'student') {
+            navigate(`/profile/${currentUser._id}`);
+        }
+    }, [currentUser, navigate]);
 
     useEffect(() => {
         const fetchStudents = async () => {

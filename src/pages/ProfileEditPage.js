@@ -35,10 +35,25 @@ const ProfileEditPage = () => {
 
     const currentUser = useSelector((state) => state.user.user);
 
-    // if logged-in user is not the owner, redirect to the public profile (no edit access)
     useEffect(() => {
-        if (currentUser && id && currentUser._id && currentUser._id !== id) {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/auth');
+            return;
+        }
+
+        if (!currentUser) return;
+
+        // teachers are not allowed to enter any profile edit page
+        if (currentUser.role === 'teacher') {
+            navigate(`/profile/${id || currentUser._id}`);
+            return;
+        }
+
+        // students can only edit their own profile
+        if (currentUser.role === 'student' && id && currentUser._id && currentUser._id !== id) {
             navigate(`/profile/${id}`);
+            return;
         }
     }, [currentUser, id, navigate]);
 

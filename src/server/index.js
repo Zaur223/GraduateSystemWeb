@@ -46,7 +46,7 @@ app.get("/users", async (req, res) => {
 
 app.get("/users/:id", getUser);
 
-// Simple auth middleware parsing the dummy token format 'dummy-token-<userId>'
+
 const auth = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
   if (!authHeader) return res.status(401).json({ message: 'Yetkisiz' });
