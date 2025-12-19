@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import BackButton from "../UI/BackButton.js";
 import ProfileCard from "../components/ProfileCard.js";
 import ProfileInfo from "../components/ProfileInfo.js";
@@ -21,7 +22,6 @@ const ProfileEditPage = () => {
                 try {
                     const response = await fetch(`http://localhost:5000/users/${id}`);
                     const data = await response.json();
-                    // ensure arrays exist
                     data.educations = data.educations || [];
                     data.skills = data.skills || [];
                     setStudent(data);
@@ -32,6 +32,15 @@ const ProfileEditPage = () => {
             fetchStudent();
         }
     }, [id]);
+
+    const currentUser = useSelector((state) => state.user.user);
+
+    // if logged-in user is not the owner, redirect to the public profile (no edit access)
+    useEffect(() => {
+        if (currentUser && id && currentUser._id && currentUser._id !== id) {
+            navigate(`/profile/${id}`);
+        }
+    }, [currentUser, id, navigate]);
 
     const [aboutModalOpen, setAboutModalOpen] = useState(false);
     const [aboutForm, setAboutForm] = useState('');
@@ -52,6 +61,7 @@ const ProfileEditPage = () => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify({ educations: student.educations, skills: student.skills, about: student.about }),
             });

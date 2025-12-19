@@ -46,7 +46,19 @@ app.get("/users", async (req, res) => {
 
 app.get("/users/:id", getUser);
 
-app.put("/users/:id", updateUser);
+// Simple auth middleware parsing the dummy token format 'dummy-token-<userId>'
+const auth = (req, res, next) => {
+  const authHeader = req.headers.authorization || req.headers.Authorization;
+  if (!authHeader) return res.status(401).json({ message: 'Yetkisiz' });
+  const parts = authHeader.split(' ');
+  const token = parts.length === 2 ? parts[1] : parts[0];
+  if (!token || !token.startsWith('dummy-token-')) return res.status(401).json({ message: 'Yetkisiz' });
+  const userId = token.replace('dummy-token-', '');
+  req.userId = userId;
+  next();
+};
+
+app.put("/users/:id", auth, updateUser);
 
 app.post("/auth/login", login);
 app.post("/auth/register", registerValidation, register);

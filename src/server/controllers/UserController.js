@@ -128,6 +128,11 @@ export const register = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
+    // authorization: ensure requester is the same user
+    if (req.userId && req.userId !== req.params.id) {
+      return res.status(403).json({ message: 'Erişim reddedildi' });
+    }
+
     const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: 'Kullanıcı bulunamadı' });
