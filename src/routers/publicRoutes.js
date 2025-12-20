@@ -5,6 +5,7 @@ import MessagePage from "../pages/MessagePage.js";
 import ProfilePage from "../pages/ProfilePage.js";
 import ProfileEditPage from "../pages/ProfileEditPage.js";
 import StatisticPage from "../pages/StatisticPage.js";
+import JobSeekersPage from "../pages/JopSeekersPage.js";
 
 const publicRoutes = [
   { path: "/", element: <HomePage /> },
@@ -14,6 +15,7 @@ const publicRoutes = [
     { path: '/profile/:id/edit', element: <ProfileEditPage />},
   { path: '/message', element: <MessagePage />},
   { path: '/statistic', element: <StatisticPage />},
+  { path: '/job-seekers', element: <JobSeekersPage />},
   { path: '/auth', element: <AuthPage />}
 ];
 

@@ -78,6 +78,12 @@ const UserSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+
+    jobStatus: {
+      type: String,
+      enum: ['job_seeker', 'not_looking'],
+      default: 'not_looking'
+    }
   },
   { timestamps: true }
 );
@@ -128,26 +134,28 @@ export const register = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
-    // authorization: ensure requester is the same user
-    if (req.userId && req.userId !== req.params.id) {
-      return res.status(403).json({ message: 'Erişim reddedildi' });
-    }
-
     const user = await User.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: 'Kullanıcı bulunamadı' });
+    }
+
+    // Only allow the user to update their own profile
+    if (req.userId && String(req.userId) !== String(req.params.id)) {
+      return res.status(403).json({ message: 'Bu profili güncelleme izniniz yok' });
     }
 
     // Only allow updating educations, skills and about through this endpoint
     if (req.body.educations !== undefined) user.educations = req.body.educations;
     if (req.body.skills !== undefined) user.skills = req.body.skills;
     if (req.body.about !== undefined) user.about = req.body.about;
+    if (req.body.jobStatus !== undefined) user.jobStatus = req.body.jobStatus;
 
     // Ensure arrays exist for student role
     if (user.role === 'student') {
       user.educations = user.educations || [];
       user.skills = user.skills || [];
       user.about = user.about || '';
+      user.jobStatus = user.jobStatus || 'not_looking';
     }
 
     await user.save();

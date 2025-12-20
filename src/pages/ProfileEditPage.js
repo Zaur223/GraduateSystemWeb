@@ -44,13 +44,11 @@ const ProfileEditPage = () => {
 
         if (!currentUser) return;
 
-        // teachers are not allowed to enter any profile edit page
         if (currentUser.role === 'teacher') {
             navigate(`/profile/${id || currentUser._id}`);
             return;
         }
 
-        // students can only edit their own profile
         if (currentUser.role === 'student' && id && currentUser._id && currentUser._id !== id) {
             navigate(`/profile/${id}`);
             return;
@@ -124,7 +122,7 @@ const ProfileEditPage = () => {
 
     return (
         <>
-            <BackButton onClick={() => navigate(-1)} />
+            <BackButton fallback="/" />
             <Box sx={{display: 'flex', justifyContent: 'space-between', mt: '39px',}}>
                 <ProfileCard student={student} />
                 <ProfileInfo student={student} />

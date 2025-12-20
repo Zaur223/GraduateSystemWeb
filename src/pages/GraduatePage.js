@@ -61,7 +61,7 @@ const GraduatePage = () => {
 
     return (
         <>
-            <BackButton onClick={() => navigate(-1)} />
+            <BackButton fallback="/" />
             <Box sx={{pt: 3, display: 'flex', gap: '12px'}}>
                 <Filter students={students} onFilter={handleFilter} />
                 <StudentLists students={filteredStudents} />

@@ -1,9 +1,28 @@
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
 
-const BackButton = ({ onClick }) => {
+const BackButton = ({ onClick, fallback = "/" }) => {
+    const navigate = useNavigate();
+
+    const handleClick = (e) => {
+        // If a custom handler is provided, use it
+        if (typeof onClick === 'function') {
+            onClick(e);
+            return;
+        }
+        // Robust back navigation: if history is shallow, go to fallback
+        const canGoBack = window.history.length > 2;
+        if (canGoBack) {
+            navigate(-1);
+        } else {
+            navigate(fallback);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        <Button onClick={onClick} variant="contained" sx={{
+        <Button onClick={handleClick} variant="contained" sx={{
             marginTop: '36px',
             width: '134px', 
             height: '40px',

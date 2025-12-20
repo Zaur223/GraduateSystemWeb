@@ -42,6 +42,14 @@ app.get("/users", async (req, res) => {
     res.status(500).json({ message: "Hata oluştu" });
   }
 });
+app.get("/users/job-seekers", async (req, res) => {
+  try {
+    const users = await User.find({ role: 'student', jobStatus: 'job_seeker' }).select("-password");
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Hata oluştu" });
+  }
+});
 
 
 app.get("/users/:id", getUser);

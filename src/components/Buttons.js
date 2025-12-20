@@ -14,7 +14,9 @@ const Buttons = () => {
             <Link to={'/statistic'} style={{textDecoration: 'none'}} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
                 <HomeButton text={'Mezuniyet İstatistiği'} icon={'images/statistic.svg'} />
             </Link>
-            <HomeButton text={'İş Arayanlar'} icon={'images/work.svg'} />
+            <Link to={'/job-seekers'} style={{ textDecoration: 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <HomeButton text={'İş Arayanlar'} icon={'images/work.svg'} />
+            </Link>
         </Box>
         </>
     )

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import BackButton from "../UI/BackButton.js";
 import ProfileCard from "../components/ProfileCard.js";
 import ProfileInfo from "../components/ProfileInfo.js";
@@ -12,7 +11,6 @@ import ProfileSkillLists from "../components/ProfileSkillLists.js";
 const ProfilePage = () => {
     const { id } = useParams();
     const [student, setStudent] = useState(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (id) {
@@ -31,7 +29,7 @@ const ProfilePage = () => {
 
     return (
         <>
-            <BackButton onClick={() => navigate(-1)} />
+            <BackButton fallback="/" />
             <Box sx={{display: 'flex', justifyContent: 'space-between', mt: '39px',}}>
                 <ProfileCard student={student} />
                 <ProfileInfo student={student} />
