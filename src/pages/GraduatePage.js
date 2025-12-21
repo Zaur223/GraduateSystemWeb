@@ -3,7 +3,7 @@ import Filter from "../components/Filter.js";
 import StudentLists from "../components/StudentLists.js";
 import BackButton from "../UI/BackButton.js";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSelector } from 'react-redux';
 
 
@@ -34,7 +34,7 @@ const GraduatePage = () => {
         fetchStudents();
     }, []);
 
-    const handleFilter = (filters) => {
+    const handleFilter = useCallback((filters) => {
         let filtered = students;
         if (filters.name) {
             filtered = filtered.filter(student => 
@@ -57,7 +57,7 @@ const GraduatePage = () => {
             );
         }
         setFilteredStudents(filtered);
-    };
+    }, [students]);
 
     return (
         <>

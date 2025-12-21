@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import Filter from "../components/Filter.js";
 import StudentLists from "../components/StudentLists.js";
 import BackButton from "../UI/BackButton.js";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const JobSeekersPage = () => {
     const [students, setStudents] = useState([]);
@@ -24,7 +24,7 @@ const JobSeekersPage = () => {
         fetchJobSeekers();
     }, []);
 
-    const handleFilter = (filters) => {
+    const handleFilter = useCallback((filters) => {
         const { name, faculty, department, gpa, graduationDate } = filters;
         const targetYear = graduationDate ? new Date(graduationDate).getFullYear() : null;
         const next = students.filter(s => {
@@ -37,7 +37,7 @@ const JobSeekersPage = () => {
             return nameOk && facultyOk && deptOk && gpaOk && gradOk;
         });
         setFilteredStudents(next);
-    };
+        }, [students]);
 
     return (
         <>
