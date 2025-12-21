@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import User from "./controllers/UserController.js";
 import { login, register, getUser, updateUser } from "./controllers/UserController.js";
 import { registerValidation } from "../validations/auth.js";
+import StudentTerm from "./controllers/StudentTerm.js";
 
 const app = express();
 app.use(express.json());
@@ -54,6 +55,26 @@ app.get("/users/job-seekers", async (req, res) => {
 
 app.get("/users/:id", getUser);
 
+app.get("/student-terms/:studentNo", async (req, res) => {
+  try {
+    const terms = await StudentTerm.find({ studentNo: req.params.studentNo }).sort({ year: 1, term: 1 });
+    res.json(terms);
+  } catch (err) {
+    res.status(500).json({ message: "Hata oluştu" });
+  }
+});
+
+app.get("/search/student-by-no/:studentNo", async (req, res) => {
+  try {
+    const user = await User.findOne({ studentNo: req.params.studentNo, role: 'student' }).select("-password");
+    if (!user) {
+      return res.status(404).json({ message: 'Öğrenci bulunamadı' });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: "Hata oluştu" });
+  }
+});
 
 const auth = (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;

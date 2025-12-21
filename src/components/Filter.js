@@ -1,8 +1,6 @@
 import { Box } from "@mui/material";
 import ComboBox from "../UI/ComboBox.js";
-import { useState, useEffect } from "react";
-import DummyFaculty from "../data/DummyFaculty.js";
-import DummySection from "../data/DummySection.js";
+import { useState, useEffect, useMemo } from "react";
 import DatePickerViews from "../UI/DatePickerViews.js";
 import DummyGANO from "../data/DummyGANO.js";
 
@@ -15,9 +13,25 @@ const Filter = ({ students, onFilter }) => {
         graduationDate: null
     });
 
-    const studentOptions = students.map(student => ({
-        label: `${student.firstName} ${student.lastName}`
-    }));
+    const studentOptions = useMemo(() => (
+        students.map(student => `${student.firstName} ${student.lastName}`)
+    ), [students]);
+
+    const facultyOptions = useMemo(() => {
+        const unique = new Set();
+        students.forEach(s => {
+            if (s?.faculty) unique.add(s.faculty);
+        });
+        return Array.from(unique);
+    }, [students]);
+
+    const departmentOptions = useMemo(() => {
+        const unique = new Set();
+        students.forEach(s => {
+            if (s?.department) unique.add(s.department);
+        });
+        return Array.from(unique);
+    }, [students]);
 
     useEffect(() => {
         onFilter(filters);
@@ -28,11 +42,11 @@ const Filter = ({ students, onFilter }) => {
     };
 
     const handleFacultyChange = (value) => {
-        setFilters(prev => ({ ...prev, faculty: value?.label || '' }));
+        setFilters(prev => ({ ...prev, faculty: value || '' }));
     };
 
     const handleDepartmentChange = (value) => {
-        setFilters(prev => ({ ...prev, department: value?.label || '' }));
+        setFilters(prev => ({ ...prev, department: value || '' }));
     };
 
     const handleGpaChange = (value) => {
@@ -55,8 +69,8 @@ const Filter = ({ students, onFilter }) => {
             paddingTop: '47px',
             }}>
                 <ComboBox options={studentOptions} label={'Öğrenci İsmi'} onChange={handleNameChange} />
-                <ComboBox options={DummyFaculty} label={'Fakülte'} onChange={handleFacultyChange} />
-                <ComboBox options={DummySection} label={'Bölüm'} onChange={handleDepartmentChange} />
+                <ComboBox options={facultyOptions} label={'Fakülte'} onChange={handleFacultyChange} />
+                <ComboBox options={departmentOptions} label={'Bölüm'} onChange={handleDepartmentChange} />
                 <ComboBox options={DummyGANO} label={'GANO'} onChange={handleGpaChange} /> 
                 <DatePickerViews label={'Mezuniyet Tarihi'} onChange={handleDateChange} />       
         </Box>

@@ -18,6 +18,12 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
 
+    studentNo: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
+
     email: {
       type: String,
       required: true,
@@ -115,6 +121,7 @@ export const register = async (req, res) => {
       password: req.body.password,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
+      studentNo: req.body.studentNo,
       role: req.body.role,
       faculty: req.body.faculty,
       department: req.body.department,

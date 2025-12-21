@@ -35,17 +35,27 @@ const GraduatePage = () => {
     }, []);
 
     const handleFilter = useCallback((filters) => {
+        const nameVal = filters.name?.toString().trim().toLowerCase();
+        const facultyVal = filters.faculty?.toString().trim().toLowerCase();
+        const deptVal = filters.department?.toString().trim().toLowerCase();
         let filtered = students;
-        if (filters.name) {
+        if (nameVal) {
             filtered = filtered.filter(student => 
-                `${student.firstName} ${student.lastName}`.toLowerCase().includes(filters.name.toLowerCase())
+                `${student.firstName || ''} ${student.lastName || ''}`
+                    .trim()
+                    .toLowerCase()
+                    .includes(nameVal)
             );
         }
-        if (filters.faculty) {
-            filtered = filtered.filter(student => student.faculty === filters.faculty);
+        if (facultyVal) {
+            filtered = filtered.filter(student => 
+                (student.faculty || '').toString().trim().toLowerCase() === facultyVal
+            );
         }
-        if (filters.department) {
-            filtered = filtered.filter(student => student.department === filters.department);
+        if (deptVal) {
+            filtered = filtered.filter(student => 
+                (student.department || '').toString().trim().toLowerCase() === deptVal
+            );
         }
         if (filters.gpa) {
             filtered = filtered.filter(student => student.gpa >= parseFloat(filters.gpa));

@@ -26,12 +26,15 @@ const JobSeekersPage = () => {
 
     const handleFilter = useCallback((filters) => {
         const { name, faculty, department, gpa, graduationDate } = filters;
+        const nameVal = name?.toString().trim().toLowerCase();
+        const facultyVal = faculty?.toString().trim().toLowerCase();
+        const deptVal = department?.toString().trim().toLowerCase();
         const targetYear = graduationDate ? new Date(graduationDate).getFullYear() : null;
         const next = students.filter(s => {
             const fullName = `${s.firstName || ''} ${s.lastName || ''}`.trim().toLowerCase();
-            const nameOk = name ? fullName.includes(String(name).toLowerCase()) : true;
-            const facultyOk = faculty ? (s.faculty === faculty) : true;
-            const deptOk = department ? (s.department === department) : true;
+            const nameOk = nameVal ? fullName.includes(nameVal) : true;
+            const facultyOk = facultyVal ? (s.faculty || '').toString().trim().toLowerCase() === facultyVal : true;
+            const deptOk = deptVal ? (s.department || '').toString().trim().toLowerCase() === deptVal : true;
             const gpaOk = gpa !== '' && gpa !== null && gpa !== undefined ? Number(s.gpa) === Number(gpa) : true;
             const gradOk = targetYear ? (s.graduationDate ? new Date(s.graduationDate).getFullYear() === targetYear : false) : true;
             return nameOk && facultyOk && deptOk && gpaOk && gradOk;
