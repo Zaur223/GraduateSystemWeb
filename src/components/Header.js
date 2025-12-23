@@ -67,14 +67,16 @@ const Header = () => {
                     <Typography sx={{mr: 2, color: '#000000'}}>
                         {isAuthenticated ? `${user.firstName} ${user.lastName}` : 'ad soyad'}
                     </Typography>
-                    <Avatar />
+                    <Avatar src={isAuthenticated && user?.avatar ? user.avatar : ''} />
                 </Button>
                 <Menu
                     anchorEl={anchorEl}
                     open={open}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={handleProfileEdit}>Kullanıcı Ayarları</MenuItem>
+                    {user?.role !== 'teacher' && (
+                        <MenuItem onClick={handleProfileEdit}>Kullanıcı Ayarları</MenuItem>
+                    )}
                     <MenuItem onClick={handleLogout}>Çıkış Yap</MenuItem>
                 </Menu>
             </Box>

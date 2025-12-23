@@ -1,5 +1,5 @@
 import { BarChart } from '@mui/x-charts/BarChart';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -59,30 +59,34 @@ const StudentGpaChart = ({ studentNo: propStudentNo }) => {
   }
 
   return (
-    <Box sx={{
-      width: '600px',
-      height: '300px',
-      background: '#fff',
-      borderRadius: '5px',
-      p: 2
-    }}>
-      <BarChart
-        xAxis={[
-          {
-            data: data.map(item => item.term),
-            scaleType: 'band',
-          },
-        ]}
-        series={[
-          {
-            data: data.map(item => item.gpa),
-            label: 'Dönem Ortalaması',
-            color: '#628EFF',
-          },
-        ]}
-        height={260}
-      />
-    </Box>
+    <>
+      
+      <Box sx={{
+        width: '600px',
+        height: '350px',
+        background: '#fff',
+        borderRadius: '5px',
+        p: 2
+      }}>
+        <Typography sx={{ fontSize: '20px', fontWeight: '700', mb: 2 }}>Tarihsel Transkript</Typography>
+        <BarChart
+          xAxis={[
+            {
+              data: data.map(item => item.term),
+              scaleType: 'band',
+            },
+          ]}
+          series={[
+            {
+              data: data.map(item => item.gpa),
+              label: 'Dönem Ortalaması',
+              color: '#628EFF',
+            },
+          ]}
+          height={260}
+        />
+      </Box>
+    </>
   );
 };
 

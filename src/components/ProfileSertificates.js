@@ -11,6 +11,8 @@ const ProfileSertificates = (props) => {
                 pl: '36px',
                 width: '554px',
                 minHeight: '216px',
+                maxHeight: '400px',
+                overflowY: 'auto',
                 background: 'rgba(255, 255, 255, 0.73)',
                 boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',
                 borderRadius: '5px'

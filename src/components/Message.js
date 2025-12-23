@@ -1,6 +1,6 @@
 import { Avatar, Box, IconButton, Typography } from '@mui/material';
 
-const Message = () => {
+const Message = (props) => {
     return (
         <>
             <Box sx={{
@@ -20,8 +20,8 @@ const Message = () => {
                     borderRadius: '7px',
                     py: '8px'
                 }}>
-                    <Avatar sx={{ml: '28px'}} />
-                    <Typography variant="span" sx={{fontFamily: 'Roboto'}}>Zaur Hajizalov</Typography>
+                    <Avatar sx={{ml: '28px'}} src={props.selectedUser?.avatar || ''} />
+                    <Typography variant="span" sx={{fontFamily: 'Roboto'}}>{props.selectedUser?.firstName} {props.selectedUser?.lastName}</Typography>
                 </Box>
                 <Box sx={{
                     height: '100%',

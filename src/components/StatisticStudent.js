@@ -68,10 +68,9 @@ const StatisticStudent = () => {
 
       {student && (
         <Box sx={{ display: 'flex', gap: '30px', mt: '20px' }}>
-          {/* SOL KART */}
           <Box sx={{
             width: '406px',
-            height: '308px',
+            minHeight: '350px',
             background: '#ffffff',
             borderRadius: '5px',
           }}>
@@ -82,7 +81,7 @@ const StatisticStudent = () => {
               px: '16px',
               py: '15px'
             }}>
-              <Avatar sx={{ width: '100px', height: '100px' }} />
+              <Avatar sx={{ width: '100px', height: '100px' }} src={student?.avatar || ''} />
               <Box>
                 <Typography sx={{ fontWeight: '700', fontSize: '20px' }}>
                   {student.firstName} {student.lastName}
@@ -109,14 +108,14 @@ const StatisticStudent = () => {
             <hr style={{ height: '5px', background: '#628EFF', border: 'none' }} />
 
             <Box sx={{ px: '16px', py: '12px' }}>
-              <Typography>Email: {student.email}</Typography>
-              <Typography>Okuduğu Bölüm: {student.department}</Typography>
-              <Typography>Fakülte: {student.faculty}</Typography>
-              <Typography>Çalıştığı Alan: {student.skills?.join(', ') || '------'}</Typography>
-              <Typography>Mezun Tarihi: {student.graduationDate ? new Date(student.graduationDate).toLocaleDateString('tr-TR') : '------'}</Typography>
+              <Typography sx={{mt: '5px'}}>Email: {student.email}</Typography>
+              <Typography sx={{mt: '5px'}}>Okuduğu Bölüm: {student.department}</Typography>
+              <Typography sx={{mt: '5px'}}>Fakülte: {student.faculty}</Typography>
+              <Typography sx={{mt: '5px'}}>Çalıştığı Alan: {student.skills?.join(', ') || '------'}</Typography>
+              <Typography sx={{mt: '5px'}}>Mezun Tarihi: {student.graduationDate ? new Date(student.graduationDate).toLocaleDateString('tr-TR') : '------'}</Typography>
             </Box>
           </Box>
-
+  
           <StudentGpaChart studentNo={student.studentNo} />
         </Box>
       )}

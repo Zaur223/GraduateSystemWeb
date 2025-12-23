@@ -1,6 +1,6 @@
 import { Avatar, Button, Typography } from "@mui/material";
 
-const MessageUser = () => {
+const MessageUser = (props) => {
     return (
         <Button sx={{
             display: 'flex',
@@ -13,8 +13,8 @@ const MessageUser = () => {
             height: '60px',
             background: '#ffffff',
         }}>
-            <Avatar sx={{width: '36px', height: '36px'}} />
-            <Typography sx={{fontSize: '13px', color: '#000000'}}>Zaur Hajizalov</Typography>
+            <Avatar sx={{width: '36px', height: '36px'}} src={props.user?.avatar || ''} />
+            <Typography sx={{fontSize: '13px', color: '#000000'}}>{props.user?.firstName} {props.user?.lastName}</Typography>
         </Button>
     )
 }

@@ -22,7 +22,7 @@ const StudentList = (props) => {
                     width: '100%',
                 }}>
                     <Box sx={{display: 'flex', alignItems: 'center', width: '100%', mx: '25px'}}>
-                        <Avatar sx={{width: '30px', height: '30px', mr: '25px'}} />
+                        <Avatar sx={{width: '30px', height: '30px', mr: '25px'}} src={props.student?.avatar || ''} />
                         <Box sx={{display: 'flex', alignItems: 'center', flex: 1, justifyContent: 'space-between'}}>
                             <Typography variant='span' sx={{fontSize: '14px', width: '120px'}}>{props.student?.firstName} {props.student?.lastName}</Typography>
                             <Typography variant='span' sx={{fontSize: '14px', width: '100px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{props.student?.department}</Typography>

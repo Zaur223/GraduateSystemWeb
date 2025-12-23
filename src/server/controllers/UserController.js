@@ -89,6 +89,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       enum: ['job_seeker', 'not_looking'],
       default: 'not_looking'
+    },
+    avatar: {
+      type: String,
+      default: null
     }
   },
   { timestamps: true }
@@ -151,11 +155,16 @@ export const updateUser = async (req, res) => {
       return res.status(403).json({ message: 'Bu profili güncelleme izniniz yok' });
     }
 
-    // Only allow updating educations, skills and about through this endpoint
+    // Only allow updating educations, skills, about and avatar through this endpoint
     if (req.body.educations !== undefined) user.educations = req.body.educations;
     if (req.body.skills !== undefined) user.skills = req.body.skills;
     if (req.body.about !== undefined) user.about = req.body.about;
     if (req.body.jobStatus !== undefined) user.jobStatus = req.body.jobStatus;
+    if (req.body.avatar !== undefined) user.avatar = req.body.avatar;
+    if (req.body.firstName !== undefined) user.firstName = req.body.firstName;
+    if (req.body.lastName !== undefined) user.lastName = req.body.lastName;
+    if (req.body.faculty !== undefined) user.faculty = req.body.faculty;
+    if (req.body.department !== undefined) user.department = req.body.department;
 
     // Ensure arrays exist for student role
     if (user.role === 'student') {
