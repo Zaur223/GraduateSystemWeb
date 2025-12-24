@@ -5,7 +5,7 @@ const ProfileSertificate = (props) => {
     return (
         <Grid container spacing={3} alignItems={'center'} marginBottom={'20px'}>
             <Grid size={3}>
-                <img src='logo.png' alt="logo" width={'100%'} />
+                <img src='/diplomaIcon.svg' alt="diploma" width={'50%'} style={{marginLeft: '15px'}} />
             </Grid>
             <Grid size={6}>
                 <Typography sx={{fontSize: '15px'}}>{edu.school}</Typography>

@@ -1,14 +1,25 @@
 import { Drawer, Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useDrawerMenu } from '../modules/Drawer_module.js';
 import HomeButton from "../UI/HomeButton.js";
 
 
 const DrawerMenu = () => {
-    const {toggleMenuHandler} = useDrawerMenu();
-    const { isOpen } = useDrawerMenu();
+    const { isOpen, toggleMenuHandler } = useDrawerMenu();
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.user.user);
+    const isTeacher = user?.role === 'teacher';
 
-
+    const handleNav = (path, requireTeacher = false) => {
+        if (requireTeacher && !isTeacher) {
+            alert('Bu alanı sadece öğretmen rolü görebilir');
+            return;
+        }
+        toggleMenuHandler();
+        navigate(path);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     return (
         <Drawer open={isOpen} onClose={toggleMenuHandler}>
@@ -19,24 +30,16 @@ const DrawerMenu = () => {
                 gap: '15px', 
                 width: '350px', 
                 paddingTop: '30px'}}>
-                <Link 
-                    to={'/graduate'} 
-                    style={{ textDecoration: 'none' }} 
-                    onClick={(e) => {
-                        toggleMenuHandler();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                >
-                    <HomeButton 
-                        flexDirection="row"
-                        justifyContent='flex-start'
-                        px='20px'
-                        text="Mezun Öğrenciler" 
-                        icon="images/graduate.svg" 
-                        width="290px" 
-                        height="60px"
-                    />
-                </Link>
+                <HomeButton 
+                    flexDirection="row"
+                    justifyContent='flex-start'
+                    px='20px'
+                    text="Mezun Öğrenciler" 
+                    icon="images/graduate.svg" 
+                    width="290px" 
+                    height="60px"
+                    onClick={() => handleNav('/graduate')}
+                />
                 <HomeButton 
                     flexDirection="row" 
                     justifyContent='flex-start'
@@ -45,6 +48,7 @@ const DrawerMenu = () => {
                     icon="images/statistic.svg" 
                     width="290px" 
                     height="60px"
+                    onClick={() => handleNav('/statistic', true)}
                 />
                 <HomeButton 
                     flexDirection="row"
@@ -54,6 +58,7 @@ const DrawerMenu = () => {
                     icon="images/work.svg" 
                     width="290px" 
                     height="60px"
+                    onClick={() => handleNav('/job-seekers', true)}
                 />
             </Box>
         </Drawer>

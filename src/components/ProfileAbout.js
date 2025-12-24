@@ -13,7 +13,7 @@ const ProfileAbout = (props) => {
             mt: '40px',
             borderRadius: '5px'
         }}>
-                <Typography sx={{ fontSize: '14px', px: '17px', pt: '14px', wordBreak: 'break-word' }}>
+                <Typography sx={{ fontSize: '14px', px: '35px', pt: '14px', wordBreak: 'break-word' }}>
                     {text}
                 </Typography>
         </Box>

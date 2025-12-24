@@ -1,15 +1,19 @@
 import { Button } from "@mui/material";
 
 const HomeButton = (props) => {
+    const { flexDirection, justifyContent, px, width, height, icon, text, ...buttonProps } = props;
+
     return (
-        <Button sx={{
+        <Button
+            {...buttonProps}
+            sx={{
                 display: 'flex',
-                flexDirection: props.flexDirection || 'column',
-                justifyContent: props.justifyContent,
+                flexDirection: flexDirection || 'column',
+                justifyContent: justifyContent,
                 gap: '7px',
-                px: props.px,
-                width: props.width || '176px',
-                height: props.height || '93px',
+                px: px,
+                width: width || '176px',
+                height: height || '93px',
                 fontSize: '13px',
                 color: '#345375',
                 borderRadius: '13px',
@@ -17,8 +21,8 @@ const HomeButton = (props) => {
                 boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)'
             }}
         >
-            <img src={props.icon} alt="" />
-            <span>{props.text}</span>
+            <img src={icon} alt="" />
+            <span>{text}</span>
         </Button>
     )
 }
